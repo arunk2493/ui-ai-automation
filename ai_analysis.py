@@ -1,4 +1,4 @@
-import openai
+import google.generativeai as genai # type: ignore
 
 def analyze_failure(test_case, error):
     prompt = f"""
@@ -9,7 +9,7 @@ def analyze_failure(test_case, error):
     Perform root cause analysis and suggest fixes.
     """
     
-    response = openai.ChatCompletion.create(
+    response = genai.ChatCompletion.create(
         model="gemini-ai",
         messages=[{"role": "user", "content": prompt}]
     )

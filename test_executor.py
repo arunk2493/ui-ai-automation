@@ -1,7 +1,7 @@
 import time
 import csv
-from playwright.sync_api import sync_playwright
-import openai
+from playwright.sync_api import sync_playwright # type: ignore
+import google.generativeai as genai # type: ignore
 
 def execute_test_case(test_case):
     start_time = time.time()
@@ -12,7 +12,7 @@ def execute_test_case(test_case):
         
         prompt = f"Perform the following test steps using UI automation:\n{test_case}"
         
-        response = openai.ChatCompletion.create(
+        response = genai.ChatCompletion.create(
             model="gemini-ai",
             messages=[{"role": "user", "content": prompt}]
         )
